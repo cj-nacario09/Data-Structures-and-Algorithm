@@ -586,14 +586,14 @@ void arr_traverse() {
 
     for (i = 0; i < size; i++) {
         while (1) {
-            printf("\n\t\t\t\t\t\tElement %d: ", count);
+            printf("\n\t\t\t\t\t\tIndex %d: ", count);
             result = scanf("%d", &arr_val[i]);
             
             if (result != 1) { // Check if the input is a valid integer
 
                 while (getchar() != '\n'); // Clear the invalid input from buffer
 
-                printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer for the size.\n\n");
+                printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer.\n\n");
             } 
             else {
                 break;
@@ -603,7 +603,7 @@ void arr_traverse() {
     }
 
     printf("\n\t\t\t\t\t-------------------------------------------\n");
-    printf("\n\t\t\t\t\t\tThe original array elements are:\n\n");
+    printf("\n\t\t\t\t\t\tThe original array of elements are:\n\n");
 
     // Display the array elements
     for (i = 0; i < size; i++) {
@@ -645,14 +645,14 @@ void arr_insert(){
     for (i = 0; i < size; i++) {
 
         while (1) {
-            printf("\n\t\t\t\t\t\tElement %d: ", count);
+            printf("\n\t\t\t\t\t\tIndex %d: ", count);
             result = scanf("%d", &arr[i]);
             
             if (result != 1) { // Check if the input is a valid integer
 
                 while (getchar() != '\n'); // Clear the invalid input from buffer
 
-                printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer for the size.\n\n");
+                printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer.\n\n");
             } 
             else {
                 break;
@@ -665,13 +665,13 @@ void arr_insert(){
 
     // Get the element to insert and the position
     while(1){
-    printf("\n\t\t\t\t\tEnter the element you want to insert: ");
+    printf("\n\t\t\t\t\tEnter the element of the index you want to insert: ");
     result = scanf("%d", &element);
     
         if (result != 1) { // Check if the input is a valid integer
 
             while (getchar() != '\n'); // Clear the invalid input from buffer
-            printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer for the size.\n\n");
+            printf("\n\n\t\t\t\t\tInvalid input.\n\n");
         } 
         else {
             break;
@@ -679,29 +679,26 @@ void arr_insert(){
     }
     
     while(1){
-    printf("\n\t\t\t\t\tEnter the position (1 to %d) to insert the element: ", size + 1);
+    printf("\n\t\t\t\t\tEnter the position or index (1 to %d) to insert the element: ", size + 1);
     result = scanf("%d", &position);
 
-        if (result != 1) { // Check if the input is a valid integer
+        if (result != 1 || position < 1 || position > size + 1) { // Check if the input is a valid integer
 
             while (getchar() != '\n'); // Clear the invalid input from buffer
-            printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer for the size.\n\n");
+            printf("\n\n\t\t\t\t\tInvalid input.\n\n");
         } 
         else {
             break;
         }
     }
 
-    // Adjust position for 0-based indexing in C
-    position--;
-
     // Shift elements to the right to make space for the new element
-    for (i = size; i > position; i--) {
+    for (i = size; i >= position; i--) {
         arr[i] = arr[i - 1];
     }
 
     // Insert the new element
-    arr[position] = element;
+    arr[position - 1] = element;
     size++; // Increase the size of the array
 
     printf("\e[1;1H\e[2J");
@@ -715,12 +712,14 @@ void arr_insert(){
     int upd_count = 1;
 
     for (i = 0; i < size; i++) {
-        printf("\n\t\t\t\t\t\tElement %d: ", upd_count);
+        printf("\n\t\t\t\t\t\tIndex %d: ", upd_count);
         printf("%d \n", arr[i]);
         sleep(1);
         upd_count++;
     }
     printf("\n\n\t\t\t\t\t-------------------------------------------\n");
+
+    printf("\n\t\t\t\t\tThe element %d is successfully inserted to index %d.\n", element , position);
 
 }// insertion array
 
@@ -759,14 +758,14 @@ void arr_del(){
     for (i = 0; i < size; i++) {
 
         while (1) {
-            printf("\n\t\t\t\t\t\tElement %d: ", count);
+            printf("\n\t\t\t\t\t\tIndex %d: ", count);
             result = scanf("%d", &arr[i]);
             
             if (result != 1) { // Check if the input is a valid integer
 
                 while (getchar() != '\n'); // Clear the invalid input from buffer
 
-                printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer for the size.\n\n");
+                printf("\n\n\t\t\t\t\tInvalid input. Please enter a integer.\n\n");
             } 
             else {
                 break;
@@ -778,14 +777,14 @@ void arr_del(){
     
     // Get the element to delete
     while(1){
-    printf("\n\t\t\t\t\tEnter the element you want to delete: ");
+    printf("\n\t\t\t\t\tEnter the element of the index you want to delete: ");
     result = scanf("%d", &element);
 
         if (result != 1) { // Check if the input is a valid integer
 
             while (getchar() != '\n'); // Clear the invalid input from buffer
 
-            printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer for the size.\n\n");
+            printf("\n\n\t\t\t\t\tInvalid input.\n\n");
         } 
         else {
             break;
@@ -828,7 +827,7 @@ void arr_del(){
 
     int upd_count=1;
     for (i = 0; i < size; i++) {
-        printf("\n\t\t\t\t\t\tElement %d: ", upd_count);
+        printf("\n\t\t\t\t\t\tIndex %d: ", upd_count);
         printf("%d \n", arr[i]);
         sleep(1);
         upd_count++;
@@ -871,14 +870,14 @@ void arr_search(){
 
         while (1) {
 
-            printf("\n\t\t\t\t\t\tElement %d: ", count);
+            printf("\n\t\t\t\t\t\tIndex %d: ", count);
             result = scanf("%d", &arr[i]);
             
             if (result != 1) { // Check if the input is a valid integer
 
                 while (getchar() != '\n'); // Clear the invalid input from buffer
 
-                printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer for the size.\n\n");
+                printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer.\n\n");
             } 
             else {
                 break;
@@ -890,14 +889,14 @@ void arr_search(){
 
     // Get the element to search
     while(1){
-    printf("\n\t\t\t\t\tEnter the element you want to search: ");
+    printf("\n\t\t\t\t\tEnter the element of the index you want to search: ");
     result = scanf("%d", &key);
 
      if (result != 1) { // Check if the input is a valid integer
 
         while (getchar() != '\n'); // Clear the invalid input from buffer
 
-        printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer for the size.\n\n");
+        printf("\n\n\t\t\t\t\tInvalid input.\n\n");
     } 
     else {
         break;
@@ -928,7 +927,7 @@ void arr_search(){
 }// Searching array
 
 // for updating element in the array
-void arr_update(){
+void arr_update(){ 
     int size, index, new_val;
     int count = 1;
     int result;
@@ -960,14 +959,14 @@ while (1) {
     for (int i = 0; i < size; i++) {
         while (1) {
 
-            printf("\n\t\t\t\t\t\tElement %d: ", count);
+            printf("\n\t\t\t\t\t\tIndex %d: ", count);
             result = scanf("%d", &arr[i]);
             
             if (result != 1) { // Check if the input is a valid integer
 
                 while (getchar() != '\n'); // Clear the invalid input from buffer
 
-                printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer for the size.\n\n");
+                printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer.\n\n");
             } 
             else {
                 break;
@@ -986,7 +985,7 @@ while (1) {
 
         while (getchar() != '\n'); // Clear the invalid input from buffer
 
-        printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer for the size.\n\n");
+        printf("\n\n\t\t\t\t\tInvalid input.\n\n");
     } 
     else  if (index < 1 || index > size) {
         printf("\n\n\t\t\t\t\t\t=> Invalid index, try again.\n");
@@ -1036,6 +1035,8 @@ while (1) {
         upd_count++;
     }
     printf("\n\t\t\t\t\t-------------------------------------------\n\n");
+
+    printf("\n\t\t\t\t\tThe element %d of index %d is successfully updated.\n", new_val , index);
 
 }// update array
 
@@ -1979,10 +1980,23 @@ void quick_sort(){
 void linear_search(){
         int size, key;
         int count = 1;
+        int result;
 
+    while(1){
     printf("\t\t\t\t\tEnter the size of the array: ");
-    scanf("%d", &size);
+    result = scanf("%d", &size);
 
+     if (result != 1 || size <= 0) { // Check if the input is a positive integer
+
+            while (getchar() != '\n'); // Clear the invalid input from buffer
+            
+            printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer for the size.\n\n");
+
+        } 
+        else {
+            break;
+        }
+    }
     // store the size of the array
     int arr[size];
 
@@ -1991,15 +2005,42 @@ void linear_search(){
     printf("Array: \n");
 
     for (int i = 0; i < size; i++) {
+
+        while(1){
         printf("\n\t\t\t\t\t\tIndex %d: ", count);
-        scanf("%d", &arr[i]);
+        result = scanf("%d", &arr[i]);
+
+         if (result != 1) { // Check if the input is a positive integer
+
+            while (getchar() != '\n'); // Clear the invalid input from buffer
+            
+            printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer for the size.\n\n");
+
+        } 
+        else {
+            break;
+        }
+        }
         count++;
     }
     printf("\n\t\t\t\t\t-------------------------------------------\n");
 
     // Get the element to search
+    while(1){
     printf("\n\t\t\t\t\tEnter the element of the index you want to search(key): ");
-    scanf("%d", &key);
+    result = scanf("%d", &key);
+
+    if (result != 1) { // Check if the input is a positive integer
+
+            while (getchar() != '\n'); // Clear the invalid input from buffer
+            
+            printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer for the size.\n\n");
+
+        } 
+        else {
+            break;
+        }
+    }
 
     printf("\e[1;1H\e[2J");
     sleep(1);
@@ -2026,10 +2067,23 @@ void linear_search(){
 void binary_search(){
     int size, key;
     int count = 1;
+    int result;
 
+    while(1){
     printf("\t\t\t\t\tEnter the size of the array: ");
-    scanf("%d", &size);
+    result = scanf("%d", &size);
 
+     if (result != 1 || size <= 0) { // Check if the input is a positive integer
+
+            while (getchar() != '\n'); // Clear the invalid input from buffer
+            
+            printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer for the size.\n\n");
+
+        } 
+        else {
+            break;
+        }
+    }
     // store the size of the array
     int arr[size];
 
@@ -2038,15 +2092,42 @@ void binary_search(){
     printf("Array: ");
 
     for (int i = 0; i < size; i++) {
+
+        while(1){
         printf("\n\t\t\t\t\t\tIndex %d: ", count);
-        scanf("%d", &arr[i]);
+        result = scanf("%d", &arr[i]);
+
+         if (result != 1) { // Check if the input is a positive integer
+
+            while (getchar() != '\n'); // Clear the invalid input from buffer
+            
+            printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer for the size.\n\n");
+
+        } 
+        else {
+            break;
+        }
+        }
         count++;
     }
     printf("\n\t\t\t\t\t-------------------------------------------\n");
 
     // Get the element to search
+    while(1){
     printf("\n\t\t\t\t\tEnter the elementof the index you want to search: ");
-    scanf("%d", &key);
+    result = scanf("%d", &key);
+
+     if (result != 1) { // Check if the input is a positive integer
+
+            while (getchar() != '\n'); // Clear the invalid input from buffer
+            
+            printf("\n\n\t\t\t\t\tInvalid input. Please enter a positive integer for the size.\n\n");
+
+        } 
+        else {
+            break;
+        }
+    }
 
     //binary algo
     int first = 0;
