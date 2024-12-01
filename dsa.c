@@ -1,8 +1,3 @@
-// NEW UPDATE ON STRINGS - deletion and replacing word in a string
-// ALSO NEW UPDATE - Adding of description per operation and name of data structures
-
-
-
 // NACARIO, CARL JOSEPH P.
 // BSCS 2-A
 
